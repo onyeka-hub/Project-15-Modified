@@ -110,7 +110,7 @@ sudo systemctl reload nginx
 
 42. Configure instance profile and give the tooling and wordpress instances relevant permissions to access AWS resources (for example, S3, EFS)
 
-43. Configure Tooling and Wordpress (A simulation)
+43. Configure Tooling and Wordpress servers
 
 ## Install WordPress on your Wordpress Server 
 
@@ -185,6 +185,12 @@ sudo yum -y install wget httpd php php-mysqlnd php-fpm php-json
 	sudo cp wp-config-sample.php wp-config.php
 ```
 
+6. **cp wp-config-sample.php wp-config.php** this is creating another file wp-config.php which 
+		contains the scipt which wordpress uses for installation.This contains database setting where to put the values of the database user name, password, host name so that the webserver can be able to connect to the database server. 
+
+ **Note** that the host name here should be the endpoint of the RDS server.
+
+
 **Note** that at this point with the public ip address, the webserver will be serving the redhat page on the browser and will serve the wordpress page when you add /wordpress to public ip on the browser.
 
 But we want the webserver to serve the wordpress page with only the public ip on the browser.
@@ -247,16 +253,12 @@ DROP USER 'username'@'host';
 
 2. Verify if you can successfully execute `SHOW DATABASES;` command and see a list of existing databases.
 
-3.**cp wp-config-sample.php wp-config.php** this is creating another file wp-config.php which 
-		contains the scipt which wordpress uses for installation.This contains database setting where to put the values of the database user name, password, host name so that the webserver can be able to connect to the database server. 
-
- **Note** that the host name here should be the endpoint of the RDS server.
 
 ![wp-config php](https://user-images.githubusercontent.com/83009045/160481667-46675a84-49b3-4b11-8924-50e1ca838017.JPG)
 
 ## Configure Tooling site
 
-## STEP 2 — CONFIGURE THE DATABASE SERVER
+## Configure the rds
 
 1. Create a database and name it tooling
 
