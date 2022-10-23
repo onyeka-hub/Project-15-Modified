@@ -374,6 +374,7 @@ Open the website in your browser http://tooling.onyeka.ga/index.php and make sur
 
 
 ## SSH Config Sample
+```
 Host *
      StrictHostKeyChecking no
 
@@ -399,6 +400,7 @@ Host tooling
     User ec2-user
     IdentityFile ~/Downloads/temp-delete.cer
     ProxyCommand ssh bastion -W %h:%p
+```
 
 
 ## Userdata for nginx (for redhat)
