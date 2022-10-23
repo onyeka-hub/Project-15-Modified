@@ -71,9 +71,7 @@ resource "aws_efs_access_point" "wordpress" {
       owner_uid   = 0
       permissions = 0755
     }
-
   }
-
 }
 
 # create access point for tooling
@@ -93,6 +91,5 @@ resource "aws_efs_access_point" "tooling" {
       owner_uid   = 0
       permissions = 0755
     }
-
   }
 }

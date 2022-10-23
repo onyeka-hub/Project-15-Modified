@@ -42,3 +42,5 @@ variable "wordpress-sg" {}
 variable "wordpress_subnet" {}
 
 variable "wordpress_subnet2" {}
+
+variable "aws_availability_zones" {}

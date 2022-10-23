@@ -1,3 +1,8 @@
+
+resource "random_shuffle" "az_list" {
+  input = var.aws_availability_zones
+}
+
 # create bation launch template
 resource "aws_launch_template" "bastion-launch-template" {
   name = "bastion-lt"
@@ -11,7 +16,10 @@ resource "aws_launch_template" "bastion-launch-template" {
   key_name = var.key_name
 
   placement {
-    availability_zone = "us-east-2a"
+    availability_zone = "random_shuffle.az_list.result"
+  }
+  lifecycle {
+    create_before_destroy = true
   }
 
   vpc_security_group_ids = [var.bastion-sg]

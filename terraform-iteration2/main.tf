@@ -17,26 +17,27 @@ module "security" {
 }
 
 module "autoscaling-groups" {
-  source            = "./modules/autoscaling-group"
-  image_id          = var.image_id
-  nginx_image_id    = var.nginx_image_id
-  instance_type     = var.instance_type
-  key_name          = var.key_name
-  max_size          = var.max_size
-  min_size          = var.min_size
-  desired_capacity  = var.desired_capacity
-  bastion-sg        = module.security.bastion-sg
-  bastion_subnet    = module.networks.bastion_subnet
-  bastion_subnet2   = module.networks.bastion_subnet2
-  nginx-sg          = module.security.nginx-sg
-  nginx_subnet      = module.networks.nginx_subnet
-  nginx_subnet2     = module.networks.nginx_subnet2
-  tooling-sg        = module.security.tooling-sg
-  tooling_subnet    = module.networks.tooling_subnet
-  tooling_subnet2   = module.networks.tooling_subnet2
-  wordpress-sg      = module.security.wordpress-sg
-  wordpress_subnet  = module.networks.wordpress_subnet
-  wordpress_subnet2 = module.networks.wordpress_subnet2
+  source                 = "./modules/autoscaling-group"
+  image_id               = var.image_id
+  nginx_image_id         = var.nginx_image_id
+  instance_type          = var.instance_type
+  key_name               = var.key_name
+  max_size               = var.max_size
+  min_size               = var.min_size
+  desired_capacity       = var.desired_capacity
+  bastion-sg             = module.security.bastion-sg
+  bastion_subnet         = module.networks.bastion_subnet
+  bastion_subnet2        = module.networks.bastion_subnet2
+  nginx-sg               = module.security.nginx-sg
+  nginx_subnet           = module.networks.nginx_subnet
+  nginx_subnet2          = module.networks.nginx_subnet2
+  tooling-sg             = module.security.tooling-sg
+  tooling_subnet         = module.networks.tooling_subnet
+  tooling_subnet2        = module.networks.tooling_subnet2
+  wordpress-sg           = module.security.wordpress-sg
+  wordpress_subnet       = module.networks.wordpress_subnet
+  wordpress_subnet2      = module.networks.wordpress_subnet2
+  aws_availability_zones = module.networks.aws_availability_zones
 }
 
 module "loadbalancer" {
@@ -48,6 +49,7 @@ module "loadbalancer" {
   int-alb-sg      = module.security.int-alb-sg
   int_alb_subnet  = module.networks.int_alb_subnet
   int_alb_subnet2 = module.networks.int_alb_subnet2
+  certificate_arn = module.route53.certificate_arn
 }
 
 module "rds" {

@@ -11,3 +11,5 @@ variable "int-alb-sg" {}
 variable "int_alb_subnet" {}
 
 variable "int_alb_subnet2" {}
+
+variable "certificate_arn" {}

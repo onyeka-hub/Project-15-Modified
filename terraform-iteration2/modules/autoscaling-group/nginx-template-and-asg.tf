@@ -11,7 +11,10 @@ resource "aws_launch_template" "nginx-launch-template" {
   key_name = var.key_name
 
   placement {
-    availability_zone = "us-east-2a"
+    availability_zone = "random_shuffle.az_list.result"
+  }
+  lifecycle {
+    create_before_destroy = true
   }
 
   vpc_security_group_ids = [var.nginx-sg]

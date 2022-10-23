@@ -23,7 +23,6 @@ output "tooling_subnet2" {
 output "wordpress_subnet" {
   value = aws_subnet.compute_private[0].id
 }
-
 output "wordpress_subnet2" {
   value = aws_subnet.compute_private[1].id
 }
@@ -52,4 +51,7 @@ output "efs_subnet" {
 }
 output "efs_subnet2" {
   value = aws_subnet.compute_private[1].id
+}
+output "aws_availability_zones" {
+  value = data.aws_availability_zones.available.names
 }
