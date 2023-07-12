@@ -1,6 +1,6 @@
 # Project-15-version-B
 
-We want to upgrade and add more features to our previous project 15 infrastructure. We want to remove the Nginx proxy server from the public subnet and put it into a private subnet to enhance more security so tat every traffic reaching our nginx proxy must be coming from the loadbalancer or the bastion host. Below is our architecture:
+We want to upgrade and add more features to our previous project 15 infrastructure. We want to remove the Nginx proxy server from the public subnet and put it into a private subnet to enhance more security so that every traffic reaching our nginx proxy must be coming from the loadbalancer or the bastion host. Below is our architecture:
 
 ![architecture](./images/architecture.PNG)
 
@@ -61,14 +61,14 @@ terraform apply --var-file=environment/dev/dev.tf
 40. Connect to server and Install nginx
 41. Configure nginx to upstream to internal ALB
 
-# Configure Proxy 
+## Configure Proxy (for ubuntu)
 ```
 sudo unlink /etc/nginx/sites-enabled/default
 
 sudo vi /etc/nginx/sites-available/tooling-reverse-proxy.conf
 ```
 
-# Configure Tooling Reverse Proxy
+## Configure Tooling Reverse Proxy
 
 ```
 server {
@@ -85,7 +85,7 @@ server {
 sudo ln -s /etc/nginx/sites-available/tooling-reverse-proxy.conf /etc/nginx/sites-enabled/tooling-reverse-proxy.conf
 ```
 
-# Configure Wordpress Reverse Proxy
+## Configure Wordpress Reverse Proxy
 
 ```
 sudo vi /etc/nginx/sites-available/wordpress-reverse-proxy.conf
@@ -177,7 +177,7 @@ sudo yum -y install wget httpd php php-mysqlnd php-fpm php-json
 	sudo systemctl restart httpd
 ```
 
-### cd into /var/www/html directory
+    cd into /var/www/html directory
 
 ```
 	cd wordpress
@@ -185,7 +185,7 @@ sudo yum -y install wget httpd php php-mysqlnd php-fpm php-json
 	sudo cp wp-config-sample.php wp-config.php
 ```
 
-6. **cp wp-config-sample.php wp-config.php** this is creating another file wp-config.php which 
+6. **cp wp-config-sample.php wp-config.php**: this is creating another file wp-config.php which 
 		contains the scipt which wordpress uses for installation.This contains database setting where to put the values of the database user name, password, host name so that the webserver can be able to connect to the database server. 
 
  **Note** that the host name here should be the endpoint of the RDS server.
@@ -316,7 +316,7 @@ sudo systemctl restart httpd
 
 This will copy recurssively the content of the html folder that is in the tooling folder into the html folder which is in the /var/www folder
 
-### Trouble shooting if any
+### Troubleshooting if any
 **Note** If you encounter 403 Error – check permissions to your /var/www/html folder and also disable SELinux 'sudo setenforce 0'
 
 To make this change permanent – open following config file **sudo vi /etc/sysconfig/selinux** and set **SELINUX=disabled** then restrt httpd.
