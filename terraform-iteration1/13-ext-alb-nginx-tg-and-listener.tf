@@ -1,3 +1,4 @@
+#--- create an external load balancer
 resource "aws_lb" "onyi-ext-alb" {
   name               = "onyi-ext-alb"
   internal           = false

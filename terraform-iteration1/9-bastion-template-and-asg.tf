@@ -1,4 +1,4 @@
-# create bation launch template
+# create bastion launch template
 resource "aws_launch_template" "bastion-launch-template" {
   name = "bastion-lt"
 

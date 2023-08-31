@@ -1,4 +1,4 @@
-# security group for external alb, to allow acess from any where for HTTP and HTTPS traffic
+# security group for internal alb, to allow acess for HTTP and HTTPS traffic
 resource "aws_security_group" "int-alb-sg" {
   name        = "int-alb-sg"
   description = "Allow http inbound traffic to the internal loadbalancer"

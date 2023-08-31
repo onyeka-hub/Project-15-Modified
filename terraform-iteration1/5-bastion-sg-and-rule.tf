@@ -1,4 +1,4 @@
-# security group for external alb, to allow acess from any where for HTTP and HTTPS traffic
+# security group for bastion, to allow ssh inbound traffic to the bastion
 resource "aws_security_group" "bastion-sg" {
   name        = "bastion-sg"
   description = "Allow ssh inbound traffic to the bastion"

@@ -1,4 +1,4 @@
-# create bation launch template
+# create tooling launch template
 resource "aws_launch_template" "tooling-launch-template" {
   name = "tooling-lt"
 
@@ -31,7 +31,7 @@ resource "aws_launch_template" "tooling-launch-template" {
   user_data = filebase64("${path.module}/bin/tooling.sh")
 }
 
-# create auto scaling group for bastion
+# create auto scaling group for tooling
 
 resource "aws_autoscaling_group" "tooling-asg" {
   name                      = "tooling-asg"

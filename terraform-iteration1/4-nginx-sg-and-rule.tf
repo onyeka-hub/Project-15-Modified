@@ -1,4 +1,4 @@
-# security group for external alb, to allow acess from any where for HTTP and HTTPS traffic
+# security group for nginx-proxy, to allow http and ssh inbound traffic to the nginx proxy
 resource "aws_security_group" "nginx-sg" {
   name        = "nginx-sg"
   description = "Allow http and ssh inbound traffic to the nginx proxy"
@@ -9,7 +9,7 @@ resource "aws_security_group" "nginx-sg" {
   }
 }
 
-# security gruop rule for nginx security group
+# security group rule for nginx security group
 resource "aws_security_group_rule" "inbound-nginx-http" {
   type                     = "ingress"
   from_port                = 80

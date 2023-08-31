@@ -1,4 +1,4 @@
-# create bation launch template
+# create wordpress launch template
 resource "aws_launch_template" "wordpress-launch-template" {
   name = "wordpress-lt"
 
@@ -31,7 +31,7 @@ resource "aws_launch_template" "wordpress-launch-template" {
   user_data = filebase64("${path.module}/bin/wordpress.sh")
 }
 
-# create auto scaling group for bastion
+# create auto scaling group for wordpress
 
 resource "aws_autoscaling_group" "wordpress-asg" {
   name                      = "wordpress-asg"
